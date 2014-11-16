@@ -1,3 +1,5 @@
+// @license magnet:?xt=urn:btih:0b31508aeb0634b347b8270c7bee4d411b5d4109&dn=agpl-3.0.txt AGPL-v3-or-Later
+
 /*   Copyright (c) 2010-2012, Diaspora Inc.  This file is
  *   licensed under the Affero General Public License version 3 or later.  See
  *   the COPYRIGHT file.
@@ -8,7 +10,7 @@
 //= require ./publisher/aspect_selector_blueprint_view
 //= require ./publisher/getting_started_view
 //= require ./publisher/uploader_view
-//= require jquery.textchange
+//= require jquery-textchange
 
 app.views.Publisher = Backbone.View.extend({
 
@@ -123,7 +125,7 @@ app.views.Publisher = Backbone.View.extend({
     this.view_uploader.on('change', this.checkSubmitAvailability, this);
 
     this.view_poll_creator = new app.views.PublisherPollCreator({
-      el: this.$('#publisher-poll-creator')
+      el: this.$('#poll_creator_container')
     });
     this.view_poll_creator.on('change', this.checkSubmitAvailability, this);
     this.view_poll_creator.render();
@@ -200,10 +202,10 @@ app.views.Publisher = Backbone.View.extend({
         // standalone means single-shot posting (until further notice)
         if( self.standalone ) self.setEnabled(false);
       },
-      error: function() {
+      error: function(model, resp, options) {
         if( app.publisher ) app.publisher.trigger('publisher:error');
         self.setInputEnabled(true);
-        Diaspora.page.flashMessages.render({ 'success':false, 'notice':Diaspora.I18n.t('failed_to_post_message') });
+        Diaspora.page.flashMessages.render({ 'success':false, 'notice':resp.responseText });
         self.setButtonsEnabled(true);
         self.setInputEnabled(true);
       }
@@ -491,3 +493,5 @@ $.fn.serializeObject = function()
   });
   return o;
 };
+// @license-end
+

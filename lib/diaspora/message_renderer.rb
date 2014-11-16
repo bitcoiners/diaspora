@@ -36,12 +36,9 @@ module Diaspora
         message << options[:append_after_truncate].to_s
       end
 
-      include ActionView::Helpers::TagHelper
       def escape
         if options[:escape]
-          # TODO: On Rails 4 port change this to ERB::Util.html_escape_once
-          # and remove the include
-          @message = escape_once message
+          @message = ERB::Util.html_escape_once message
 
           # Special case Hex entities since escape_once
           # doesn't catch them.
@@ -214,6 +211,12 @@ module Diaspora
       else
         plain_text_without_markdown squish: true, truncate: opts.fetch(:length, 20)
       end
+    end
+
+    # Extracts all the urls from the raw message and return them in the form of a string
+    # Different URLs are seperated with a space
+    def urls
+      @urls ||= Twitter::Extractor.extract_urls(@raw_message)
     end
 
     def raw

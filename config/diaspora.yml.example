@@ -172,11 +172,11 @@ configuration: ## Section
   ## Settings potentially affecting the privacy of your users 
   privacy: ## Section
     
-    ## Include jQuery from jquery.com's CDN (default=true)
-    ## This can save you some traffic and speeds up load time since most
-    ## clients already have this one cached. Set this to false if you want
-    ## the jQuery library to be loaded from your pod's own resources.
-    #jquery_cdn: true
+    ## Include jQuery from jquery.com's CDN (default=false)
+    ## Enabling this can reduce traffic and speed up load time since most
+    ## clients already have this one cached. When set to false (the default),
+    ## the jQuery library will be loaded from your pod's own resources.
+    #jquery_cdn: false
     
     ## Google Analytics (disabled by default)
     ## Provide a key to enable tracking by Google Analytics 
@@ -289,7 +289,7 @@ configuration: ## Section
       ## Captcha image size (default='120x20')
       #image_size: '120x20'
 
-      ## Length of captcha text (default=5)
+      ## Length of captcha text (default=5)(max=12)
       #captcha_length: 5
 
       ## Captcha image style (default='simply_green')
@@ -330,6 +330,21 @@ configuration: ## Section
       ## Set a number to activate this setting. This age limit is shown
       ## in the default ToS document.
       #minimum_age: false
+      
+    ## Maintenance
+    ## Various pod maintenance related settings are controlled from here.
+    maintenance: ## Section
+      ## Removing of old inactive users can be done automatically by background
+      ## processing. The amount of inactivity is set by `after_days`. A warning
+      ## email will be sent to the user and after an additional `warn_days`, the
+      ## account will be automatically closed.
+      ## This maintenance is not enabled by default.
+      remove_old_users: ## Section
+        #enable: true
+        #after_days: 730
+        #warn_days: 30
+        ## Limit queuing for removal per day.
+        #limit_removals_to_per_day: 100
 
   ## Posting from Diaspora to external services (all are disabled by default)
   services: ## Section

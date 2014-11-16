@@ -10,6 +10,7 @@ config/heroku.yml
 config/initializers/secret_token.rb
 config/redis.conf
 config/deploy_config.yml
+config/schedule.rb
 .bundle
 vendor/bundle/
 vendor/cache/
@@ -29,9 +30,6 @@ spec/fixtures/*.y*ml
 spec/fixtures/*.fixture.*
 coverage/
 xml_locales/
-app/assets/images/branding-*.png
-app/assets/images/icons-*.png
-app/assets/images/social_media_logos-*.png
 
 #Documentation
 .yardoc/
@@ -58,7 +56,6 @@ tmp/
 *.swp
 *~
 *#
-bin/*
 nbproject
 patches-*
 capybara-*.html
@@ -70,3 +67,6 @@ dump.rdb
 
 #IDE
 diaspora.iml
+
+# Dolphin's directory's preferences files
+*.directory

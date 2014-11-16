@@ -343,8 +343,10 @@ en:
       my_contacts: "My Contacts"
       all_contacts: "All Contacts"
       only_sharing_with_me: "Only sharing with me"
-      remove_person_from_aspect: "Remove %{person_name} from \"%{aspect_name}\""
+      add_contact: "Add contact"
+      remove_contact: "Remove contact"
       many_people_are_you_sure: "Are you sure you want to start a private conversation with more than %{suggested_limit} contacts? Posting to this aspect may be a better way to contact them."
+      user_search: "User Search"
     spotlight:
       community_spotlight: "Community Spotlight"
       suggest_member: "Suggest a member"
@@ -800,6 +802,22 @@ en:
         The diaspora* email robot!
 
         [1]: %{invite_url}
+    remove_old_user:
+      subject: "Your diaspora* account has been flagged for removal due to inactivity"
+      body: |-
+        Hello,
+        
+        Due to inactivity on your diaspora* account at %{pod_url}, we regret to inform you that the system has flagged this account for automated removal. This happens automatically after an inactivity period of more than %{after_days} days.
+        
+        You can avoid the loss of this account by logging into the account before %{remove_after}, in which case removal will be automatically cancelled.
+        
+        This maintenance is done to ensure our active users get the most out of the resources of this diaspora* instance. Thank you for your understanding.
+        
+        If you would like to keep your account, please login here: %{login_url}
+        
+        Hoping to see you again,
+
+        The diaspora* email robot!
   people:
     zero: "no people"
     one: "1 person"
@@ -920,7 +938,7 @@ en:
     review_link: "Mark as reviewed"
     delete_link: "Delete item"
     confirm_deletion: "Are you sure to delete the item?"
-    not_found: "<u>The post/comment was not found. It seams that it was deleted by the user!</u>"
+    not_found: "<u>The post/comment was not found. It seems that it was deleted by the user!</u>"
     status:
       marked: "The report was marked as reviewed"
       destroyed: "The post was destroyed"
@@ -1159,10 +1177,7 @@ en:
       no_message_to_display: "No message to display."
     destroy:
       failure: "Failed to delete post"
-    too_long:
-      zero: "please make your status messages less than %{count} characters"
-      one: "please make your status messages less than %{count} characters"
-      other: "please make your status messages less than %{count} characters"
+    too_long: "Please make your status message fewer than %{count} characters. Right now it is %{current_length} characters"
 
   stream_helper:
     show_comments:
@@ -1273,13 +1288,13 @@ en:
 
       close_account:
         dont_go: "Hey, please don't go!"
-        make_diaspora_better: "We want you to help us make diaspora* better, so you should help us out instead of leaving. If you do want to leave, we want you to know what happens next."
+        make_diaspora_better: "We'd love you to stay and help us make diaspora* better instead of leaving. If you really do want to leave, however, here's what will happen next:"
         mr_wiggles: 'Mr Wiggles will be sad to see you go'
-        what_we_delete: "We will delete all of your posts and profile data as soon as humanly possible. Your comments will hang around, but they would be associated with your diaspora* ID instead of your name."
-        locked_out: "You will get signed out and locked out of your account."
-        lock_username: "This will lock your username if you decided to sign back up."
-        no_turning_back: "Currently, there is no turning back."
-        if_you_want_this: "If you really want this, type in your password below and click 'Close Account'"
+        what_we_delete: "We will delete all of your posts and profile data as soon as possible. Your comments on other people's posts will still appear, but they will be associated with your diaspora* ID rather than your name."
+        locked_out: "You will get signed out and locked out of your account until it has been deleted."
+        lock_username: "Your username will be locked. You will not be able create a new account on this pod with the same ID."
+        no_turning_back: "There is no turning back! If you're really sure, enter your password below."
+        if_you_want_this: "If you really want this to happen, type in your password below and click 'Close Account'"
 
     privacy_settings:
       title: "Privacy Settings"
@@ -1287,7 +1302,7 @@ en:
       stop_ignoring: "Stop ignoring"
 
     destroy:
-      success: "Your account has been locked.  It may take 20 minutes for us to finish closing your account.  Thank you for trying diaspora*."
+      success: "Your account has been locked. It may take 20 minutes for us to finish closing your account. Thank you for trying diaspora*."
       no_password: "Please enter your current password to close your account."
       wrong_password: "The entered password didn't match your current password."
     getting_started:

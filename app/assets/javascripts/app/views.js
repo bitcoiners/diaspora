@@ -1,3 +1,5 @@
+// @license magnet:?xt=urn:btih:0b31508aeb0634b347b8270c7bee4d411b5d4109&dn=agpl-3.0.txt AGPL-v3-or-Later
+
 app.views.Base = Backbone.View.extend({
 
   initialize : function(options) {
@@ -35,9 +37,10 @@ app.views.Base = Backbone.View.extend({
 
   renderTemplate : function(){
     var presenter = _.isFunction(this.presenter) ? this.presenter() : this.presenter
-    this.template = JST[this.templateName+"_tpl"]
+    this.template = HandlebarsTemplates[this.templateName+"_tpl"]
     if(!this.template) {
       console.log(this.templateName ? ("no template for " + this.templateName) : "no templateName specified")
+      return;
     }
 
     this.$el
@@ -146,3 +149,5 @@ app.views.StaticContentView = app.views.Base.extend({
     return this.data;
   },
 });
+// @license-end
+
