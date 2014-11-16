@@ -14,9 +14,8 @@
 ActiveRecord::Schema.define(version: 20141024170120) do
 
   create_table "account_deletions", force: true do |t|
-    t.string   "diaspora_handle"
-    t.integer  "person_id"
-    t.datetime "completed_at"
+    t.string  "diaspora_handle"
+    t.integer "person_id"
   end
 
   create_table "aspect_memberships", force: true do |t|
@@ -246,8 +245,8 @@ ActiveRecord::Schema.define(version: 20141024170120) do
   create_table "open_graph_caches", force: true do |t|
     t.string "title"
     t.string "ob_type"
-    t.text   "image"
-    t.text   "url"
+    t.string "image"
+    t.string "url"
     t.text   "description"
   end
 
@@ -327,8 +326,8 @@ ActiveRecord::Schema.define(version: 20141024170120) do
     t.string   "guid"
     t.text     "author_signature"
     t.text     "parent_author_signature"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "poll_participations", ["poll_id"], name: "index_poll_participations_on_poll_id", using: :btree
@@ -338,8 +337,8 @@ ActiveRecord::Schema.define(version: 20141024170120) do
     t.integer  "status_message_id", null: false
     t.boolean  "status"
     t.string   "guid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_index "polls", ["status_message_id"], name: "index_polls_on_status_message_id", using: :btree
@@ -432,12 +431,12 @@ ActiveRecord::Schema.define(version: 20141024170120) do
     t.string   "item_type",                  null: false
     t.boolean  "reviewed",   default: false
     t.text     "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "user_id",                    null: false
   end
 
-  add_index "reports", ["item_id"], name: "index_reports_on_item_id", using: :btree
+  add_index "reports", ["item_id"], name: "index_post_reports_on_post_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.integer  "person_id"
@@ -476,9 +475,9 @@ ActiveRecord::Schema.define(version: 20141024170120) do
 
   create_table "simple_captcha_data", force: true do |t|
     t.string   "key",        limit: 40
-    t.string   "value",      limit: 12
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "value",      limit: 6
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   add_index "simple_captcha_data", ["key"], name: "idx_key", using: :btree
@@ -557,7 +556,6 @@ ActiveRecord::Schema.define(version: 20141024170120) do
     t.text     "hidden_shareables"
     t.datetime "reset_password_sent_at"
     t.datetime "last_seen"
-    t.datetime "remove_after"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
