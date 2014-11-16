@@ -63,6 +63,7 @@ nbproject
 patches-*
 capybara-*.html
 dump.rdb
+.project
 
 #Rubinius's JIT
 *.rbc
