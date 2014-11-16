@@ -32,6 +32,9 @@ series and run our comphrensive testsuite against it.
 ## Change in defaults.yml
 The default for including jQuery from a CDN has changed. If you want to continue to include it from a CDN, please explicitly set the `jquery_cdn` setting to `true` in diaspora.yml.
 
+## Experimental chat feature
+This release adds experimental integration with XMPP for realtime chat. Please see  [our wiki](https://wiki.diasporafoundation.org/Vines) for further informations.
+
 ## Change in statistics.json schema
 The way services are shown in the `statistics.json` route is changing. The keys relating to showing whether services are enabled or not are moving to their own container as `"services": {....}`, instead of having them all in the root level of the json.
 
@@ -41,6 +44,11 @@ The keys will still be available in the root level within the 0.5 release. The o
 Removing of old inactive users can now be done automatically by background processing. The amount of inactivity is set by `after_days`. A warning email will be sent to the user and after an additional `warn_days`, the account will be automatically closed.
 
 This maintenance is not enabled by default. Podmins can enable it by for example copying over the new settings under `settings.maintenance` to their `diaspora.yml` file and setting it enabled. The default setting is to expire accounts that have been inactive for 2 years (no login).
+
+## Camo integration to proxy external assets
+It is now possible to enable an automatic proxying of external assets, for example images embedded via Markdown or OpenGraph thumbnails loaded from insecure third party servers through a [Camo proxy](https://github.com/atmos/camo).
+
+This is disabled by default since it requires the installation of additional packages and might cause some traffic. Check the [wiki page](https://wiki.diasporafoundation.org/Installation/Camo) for more information and detailed installation instructions.
 
 ## Refactor
 * Redesign contacts page [#5153](https://github.com/diaspora/diaspora/pull/5153)
@@ -81,6 +89,8 @@ This maintenance is not enabled by default. Podmins can enable it by for example
 * Fix translations on mobile password reset pages [#5318](https://github.com/diaspora/diaspora/pull/5318)
 * Handle unset user agent when signing out [#5316](https://github.com/diaspora/diaspora/pull/5316)
 * More robust URL parsing for oEmbed and OpenGraph [#5347](https://github.com/diaspora/diaspora/pull/5347)
+* Fix Publisher doesn't expand while uloading images [#3098](https://github.com/diaspora/diaspora/issues/3098)
+* Drop unneeded and too open crossdomain.xml
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)
@@ -95,6 +105,9 @@ This maintenance is not enabled by default. Podmins can enable it by for example
 * Infinite scrolling in the notifications dropdown [#5237](https://github.com/diaspora/diaspora/pull/5237)
 * Maintenance feature to automatically expire inactive accounts [#5288](https://github.com/diaspora/diaspora/pull/5288)
 * Add LibreJS markers to JavaScript [5320](https://github.com/diaspora/diaspora/pull/5320)
+* Ask for confirmation when leaving a submittable publisher [#5309](https://github.com/diaspora/diaspora/pull/5309)
+* Allow page-specific styling via individual CSS classes [#5282](https://github.com/diaspora/diaspora/pull/5282)
+* Change diaspora logo in the header on hover [#5355](https://github.com/diaspora/diaspora/pull/5355)
 
 # 0.4.1.2
 
