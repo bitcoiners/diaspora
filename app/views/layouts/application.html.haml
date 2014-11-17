@@ -57,12 +57,12 @@
 
     = yield :before_content
 
-    - if content_for?(:container_content)
-      .container
-        =  yield(:container_content)
-    - else
-      = content_for?(:content) ? yield(:content) : yield
-
+    .wrapper
+      - if content_for?(:container_content)
+        .container
+          =  yield(:container_content)
+      - else
+        = content_for?(:content) ? yield(:content) : yield
     = yield :after_content
 
     = include_chartbeat

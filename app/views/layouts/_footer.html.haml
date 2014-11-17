@@ -1,5 +1,6 @@
 %footer
   .container
-    .branding-powered_by_diaspora
+    .bts-logo= link_to image_tag("bts-logo-ico.svg", :width => "20"), "http://www.bitshares.org"
+    .powered-by= "Powered by BitShares"
     %ul#footer_nav
       = render :partial =>'shared/links'
